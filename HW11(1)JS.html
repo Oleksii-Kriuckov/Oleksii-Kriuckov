@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirm Save</title>
+    <style>
+        form {
+            margin: 20px 10px;
+        }
+
+        textarea {
+            font-size: larger;
+        }
+
+        .save {
+            margin: 5px;
+            font-size: 16px;
+        }
+
+    </style>
+</head>
+<body>
+    <form action="">
+        <textarea cols="30" rows="10" autofocus minlength="3" placeholder="Введите текст, который хотите сохранить"></textarea>
+        
+    </form>
+    <button class="save">Сохранить</button>
+
+<!--  -->  <script>
+        let clickCounter = 0, 
+        textarea = document.querySelector("textarea"),
+        buttonSave = document.querySelector(".save");
+
+        if (textarea.value !==null) {
+            window.onbeforeunload = function() {
+                    return confirm("Есть несохранённые изменения. Всё равно уходим?");
+            };
+            buttonSave.onclick = ()=> {
+                window.onbeforeunload = null;
+            }
+        }
+
+    </script>
+    
+</body>
+</html>
